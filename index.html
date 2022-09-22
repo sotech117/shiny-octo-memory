@@ -1,0 +1,69 @@
+<style>
+    img {
+        width: 500px;
+        margin-bottom: 10px;
+    }
+
+    .img-flex {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+</style>
+
+<body>
+<h1 id="title">Header</h1>
+
+<h3>Smaller header</h3>
+
+<button id="button" onclick="oldWay()">button</button>
+
+<input type="text" onkeydown="log(this)">
+
+<marquee>test</marquee>
+
+<center>this is centered</center>
+
+<div class="img-flex">
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+    <img src="P1185646.jpg" alt="uiux TAs at dinnner"/>
+</div>
+
+<div id="result">
+
+</div>
+
+
+</body>
+
+<script>
+    const list = ['miku', 'michael', 'morgan', 'josh', 'paul'];
+
+    const filtered = list.filter(name => {
+        return name.includes('m');
+    });
+
+    const mapped = list.map((name, i) => {
+        return {
+            'index': i,
+            'name': name
+        };
+    });
+
+    const evens = mapped.filter(objects => objects.index % 2 === 0);
+
+    const waitXSec = async (x) => new Promise(resolve => (setTimeout(() => resolve(`waited ${x} secs`), x * 1000)))
+
+    const asyncFun = async () => {
+        console.log('code to run before')
+        const res = await waitXSec(5);
+        const ele = document.getElementById('result');
+        ele.innerText = res;
+    }
+
+    asyncFun();
+</script>
